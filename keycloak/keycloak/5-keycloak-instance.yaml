@@ -12,8 +12,8 @@ spec:
     httpPort: 8090
     tlsSecret: my-tls-secret
   hostname:
-    adminUrl: 'https://keycloak-rhdh-operator.apps.cluster-<GUID>.dynamic.redhatworkshops.io'
-    hostname: keycloak-rhdh-operator.apps.cluster-<GUID>.dynamic.redhatworkshops.io
+    adminUrl: 'https://keycloak-rhdh-operator.apps.cluster-xsgv2.dynamic.redhatworkshops.io'
+    hostname: keycloak-rhdh-operator.apps.cluster-xsgv2.dynamic.redhatworkshops.io
   instances: 1
   db:
     vendor: postgres
