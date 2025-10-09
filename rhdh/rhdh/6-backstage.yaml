@@ -23,5 +23,5 @@ spec:
     replicas: 1
     route:
       enabled: true
-      host: rhdh.apps.cluster-<GUID>.dynamic.redhatworkshops.io
-      subdomain: apps.cluster-<GUID>.dynamic.redhatworkshops.io
+      host: rhdh.apps.cluster-xsgv2.dynamic.redhatworkshops.io
+      subdomain: apps.cluster-xsgv2.dynamic.redhatworkshops.io
