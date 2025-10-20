@@ -72,3 +72,23 @@ Save that for later use
 ```
 
 apply 6
+
+- Delete files 1-6 and redeploy everything with argoCD (GitOps)
+```bash
+oc delete -f /keycloak/
+```
+
+- Redeploy using argoCD
+
+```bash
+cd rhdh-idp/argocd
+```
+
+```bash
+oc apply -f keycloak.yaml  
+```
+- Manually deploy rhdh resources (if you want)
+
+- Install RHDH with the argoCD app
+
+Once up and running, switch to `phase-2-work` branch for next steps
