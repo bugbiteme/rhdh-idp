@@ -1,5 +1,7 @@
 # Phase 1: Building Internal Developer Platform (IDP) with Red Hat Developer Hub
 
+**Note Phase 1 is intended to show manuall setup of Keycloak by using `oc apply -f ...`commands**  
+**Phase 2 uses ArgoCD to deploy the same resources**
 
 - Generate certs for phase-1-work keycloak setup
 
