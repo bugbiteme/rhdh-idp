@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     path: rhdh
-    repoURL: https://github.com/<your-github-account-user>/rhdh-idp.git
+    repoURL: https://github.com/bugbiteme/rhdh-idp.git
     targetRevision: phase-1-work
   syncPolicy:
     automated:
