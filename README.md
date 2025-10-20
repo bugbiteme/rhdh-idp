@@ -148,3 +148,18 @@ Example:
 https://github.com/RedHatQuickCourses/RHDH_Golden_Path/blob/module2/all-templates.yaml
 
 - Once the template has been imported, get an API key from https://home.openweathermap.org/api_keys (for the app demo)
+
+
+Side notes. Needed to add SA to get front-end plugins to work for viweing topoligy
+
+```bash
+# set the SA and turn token automount on
+oc patch deploy/backstage-developer-hub -n demo-project \
+  -p '{"spec":{"template":{"spec":{
+    "serviceAccountName":"rhdh-k8s-sa",
+    "automountServiceAccountToken": true
+  }}}}'
+
+
+oc adm policy add-role-to-user view -n demo-project -z rhdh-k8s-sa
+```
