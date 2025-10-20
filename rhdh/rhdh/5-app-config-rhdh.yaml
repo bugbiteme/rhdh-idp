@@ -65,7 +65,7 @@ data:
         - type: config
           clusters:
             - name: openshift-cluster
-              url: https://api.cluster-<GUID>.dynamic.redhatworkshops.io:6443
+              url: https://api.cluster-wfjfq.dynamic.redhatworkshops.io:6443
               authProvider: serviceAccount
               skipTLSVerify: true
               serviceAccountToken: ${K8S_SA_TOKEN}

@@ -92,3 +92,59 @@ oc apply -f keycloak.yaml
 - Install RHDH with the argoCD app
 
 Once up and running, switch to `phase-2-work` branch for next steps
+
+- Merge `phase-1-work` with `phase-2-work` branch before continuing
+
+```bash
+git merge phase-1-work   
+                                         
+Auto-merging rhdh/rhdh/5-app-config-rhdh.yaml
+Auto-merging rhdh/rhdh/6-backstage.yaml
+Merge made by the 'ort' strategy.
+ README.md                                  | 93 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ argocd/keycloak.yaml                       |  2 +-
+ argocd/rhdh.yaml                           |  2 +-
+ keycloak/keycloak/3-secret.yaml            |  4 ++--
+ keycloak/keycloak/5-keycloak-instance.yaml |  4 ++--
+ keycloak/keycloak/6-keycloak-realm.yaml    | 12 ++++++------
+ rhdh/rhdh/5-app-config-rhdh.yaml           | 12 ++++++------
+ rhdh/rhdh/6-backstage.yaml                 |  4 ++--
+ 8 files changed, 113 insertions(+), 20 deletions(-)
+ ```
+
+ - Manual setup for phase 2
+
+1. Apply `rhdh/3-5-serviceAccount.yaml`
+2. Extract the Kubernetes service account token for RHDH to use to access the cluster
+
+```bash
+oc -n demo-project get secret rhdh-k8s-sa-token -o jsonpath="{.data.token}" | base64 
+```
+
+3. Use the output to set `K8_SA_TOKEN` in `rhdh/4-Secret.yaml`
+4. Generate and get personal access token (classic) from GitHub
+
+  - https://github.com/settings/tokens
+  - Personal access tokens (classic)
+  - Generate New token
+  - New personal access token (classic)
+  - call it `RHDHTOKEN` (can be an name).
+  - Select scopes (may vary based on requirements)
+    - `repo`
+    - `workflow`
+    - `write:packages`
+    - `admin:org`
+    - `admin:repo_hook`
+    - `admin:org_hook`
+5. Copy generated token to `GITHUB_TOKEN` in `rhdh/4-Secret.yaml`
+6. Apply `rhdh/4-Secret.yaml`
+7. Modify GUID and apply `rhdh/5-app-config-rhdh.yaml`
+8. Apply `rhdh/5-dynamic-plugins.yaml`
+9. Apply `rhdh/6-backstage.yaml`
+
+Once up and running, you now have the ability to add templates
+
+Example:
+https://github.com/RedHatQuickCourses/RHDH_Golden_Path/blob/module2/all-templates.yaml
+
+- Once the template has been imported, get an API key from https://home.openweathermap.org/api_keys (for the app demo)
